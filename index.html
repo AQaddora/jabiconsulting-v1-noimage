@@ -508,6 +508,25 @@
                                 .cap h3 { font-size: 17px; }
                                 .cap p  { font-size: 13.5px; }
                                 .cap-icon { width: 40px; height: 40px; margin-bottom: 16px; } }
+    /* Mobile only: one-at-a-time horizontal swipe carousel (desktop/tablet unchanged) */
+    @media (max-width: 600px) {
+      .caps {
+        display: flex;
+        grid-template-columns: none;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        margin: 0 -28px;          /* bleed to screen edges */
+        padding: 4px 28px 12px;   /* keep first card aligned to content edge */
+      }
+      .caps::-webkit-scrollbar { display: none; }
+      .cap {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+      }
+    }
     .cap {
       position: relative;
       background: var(--card);
@@ -553,6 +572,17 @@
       margin-bottom: 30px;
     }
     @media (max-width: 880px) { .regions-intro { grid-template-columns: 1fr; gap: 32px; } }
+    .blueprint-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 22px;
+      color: var(--accent);
+      font-weight: 600; font-size: 15px;
+      letter-spacing: -.01em;
+      transition: color .2s;
+    }
+    .blueprint-link:hover { color: var(--accent-2); }
+    .blueprint-link-arrow { transition: transform .2s; display: inline-block; }
+    .blueprint-link:hover .blueprint-link-arrow { transform: translateX(4px); }
     .regions-intro-photo {
       border-radius: var(--radius);
       overflow: hidden;
@@ -1289,6 +1319,10 @@
           <div class="kicker">Where We Work</div>
           <h2>16 Markets. One Region. Built On The Ground.</h2>
           <p class="sub">Active engagements and partner networks across the Gulf, the Levant, the Maghreb, and the Horn — anchored by offices in Reston, Virginia and Nablus, Palestine.</p>
+          <a class="blueprint-link" href="assets/blueprint-conducting-business-gcc.pdf" download>
+            Click here to download our free blueprint for conducting business in the GCC
+            <span class="blueprint-link-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
         <div class="regions-intro-photo">
           <img src="assets/imagery/cap-gcc.jpg" alt="GCC market entry — Gulf business advisory" loading="lazy" />
@@ -1366,7 +1400,7 @@
 
       <div class="ai-grid reveal" data-delay="1">
         <figure class="ai-tile featured">
-          <img src="assets/imagery/ai-uae-students.jpg" alt="Young people in a UAE robotics &amp; AI workshop" loading="lazy" />
+          <img src="assets/imagery/ai-gulf-technologists-vertical.jpg" alt="Training the next generation of Gulf technologists — students and engineers in a robotics &amp; AI lab" loading="lazy" />
           <figcaption class="ai-tile-cap">
             <div class="label">AI &amp; Youth Workforce</div>
             <div class="title">Training the next generation of Gulf technologists</div>
